@@ -1,0 +1,68 @@
+CREATE TABLE `Doctor` (
+  `usuarioD` INT NOT NULL AUTO_INCREMENT,
+  `password` VARCHAR(50),
+  `nombre` VARCHAR(30),
+  `aPaterno` VARCHAR(30),
+  `aMaterno` VARCHAR(30),
+  `correo` VARCHAR(50),
+  `cedula` VARCHAR(15),
+  PRIMARY KEY (`usuarioD`)
+);
+
+CREATE TABLE `Paciente` (
+  `claveP` VARCHAR(20) NOT NULL,
+  `nombre` VARCHAR(30),
+  `aPaterno` VARCHAR(30),
+  `aMaterno` VARCHAR(30),
+  `fechaN` DATE,
+  `usuarioD` INT NOT NULL,
+  `sexo` VARCHAR(15),
+  PRIMARY KEY (`claveP`),
+  FOREIGN KEY (`usuarioD`) REFERENCES `test`.`Doctor`(`usuarioD`)
+  ON DELETE CASCADE
+);
+
+CREATE TABLE `Archivos` (
+  `nombre` VARCHAR(75),
+  `claveP` VARCHAR(20),
+  `fecha` DATE, 
+  FOREIGN KEY (claveP) REFERENCES `test`.`Paciente`(`claveP`)
+  ON DELETE CASCADE
+);
+
+CREATE TABLE `HClinica` (
+  `claveP` VARCHAR(20) PRIMARY KEY,
+  `antecedentesH` VARCHAR(50),
+  `antecedentesPNP` VARCHAR(50),
+  `antecedentesPP` VARCHAR(50),
+  `padecimiento` VARCHAR(80),
+  `interrogatorioA` VARCHAR(50),
+  `exploracionF` VARCHAR(240),
+  `resultadosP` VARCHAR(240),
+  `terapeuticaE` VARCHAR(240),
+  `diagnosticoP` VARCHAR(240),
+  FOREIGN KEY (claveP) REFERENCES `test`.`Paciente`(`claveP`)
+  ON DELETE CASCADE
+);
+
+
+CREATE TABLE `Visitas` (
+  `usuarioD` INT,
+  `claveP` VARCHAR(20),
+  `fechaC` DATE,
+  `peso` FLOAT,
+  `talla` FLOAT,
+  `tensionA` FLOAT,
+  `frecuenciaC` FLOAT,
+  `frecuenciaR` FLOAT,
+  `temperatura` FLOAT,
+  `resumenI` VARCHAR(240),
+  `exploracionF` VARCHAR(240),
+  `resultadoE` VARCHAR(240),
+  `diagnosticos` VARCHAR(240),
+  `planTratamiento` VARCHAR(240),
+  `pronostico` VARCHAR(240),
+  FOREIGN KEY (claveP) REFERENCES `test`.`Paciente`(`claveP`),
+  FOREIGN KEY (usuarioD) REFERENCES `test`.`Doctor`(`usuarioD`)
+  ON DELETE CASCADE
+);
