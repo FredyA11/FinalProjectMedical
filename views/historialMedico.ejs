@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Clínica - Registro</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <style>
+          .mt-7{
+            margin-top: 6%;
+          }
+
+          .ml-n6{
+            margin-left: -30%;
+          }
+          .img-log {
+          -webkit-filter: invert(1);
+          filter: invert(1);
+          }
+                  
+          body{
+             background-color: white;
+             font-family: 'Quicksand', sans-serif;
+          }
+          
+        </style>
+
+
+        <script type="text/javascript">
+
+          function confirmarCambios(){
+            let form = document.getElementById("cambiarInfo");
+            form.submit();
+          }
+
+          function modificarCampos(){
+            let style = "cursor:text; border-radius: 2px; ";
+            document.getElementById("btnConfirmar").setAttribute("style", "display:inline;");
+            document.getElementById("btnCancelar").setAttribute("style", "display:inline;");
+            
+            document.getElementById("nombreC").readOnly = false;
+            document.getElementById("nombreC").setAttribute("style", style);
+
+            document.getElementById("apellidoP").readOnly = false;
+            document.getElementById("apellidoP").setAttribute("style", style);
+
+            document.getElementById("apellidoM").readOnly = false;
+            document.getElementById("apellidoM").setAttribute("style", style);
+
+            document.getElementById("fechaN").readOnly = false;
+            document.getElementById("fechaN").setAttribute("style", style);
+
+            document.getElementById("sexoId").readOnly = false;
+            document.getElementById("sexoId").setAttribute("style", style);
+
+            document.getElementById("antecedentesH").readOnly = false;
+            document.getElementById("antecedentesH").setAttribute("style", style);
+
+            document.getElementById("antecedentesPNP").readOnly = false;
+            document.getElementById("antecedentesPNP").setAttribute("style", style);
+
+            document.getElementById("antecedentesPP").readOnly = false;
+            document.getElementById("antecedentesPP").setAttribute("style", style);
+
+            document.getElementById("padecimiento").readOnly = false;
+            document.getElementById("padecimiento").setAttribute("style", style);
+
+            document.getElementById("interrogatorioA").readOnly = false;
+            document.getElementById("interrogatorioA").setAttribute("style", style);
+
+            document.getElementById("exploracionF").readOnly = false;
+            document.getElementById("exploracionF").setAttribute("style", style);
+
+            document.getElementById("resultadosP").readOnly = false;
+            document.getElementById("resultadosP").setAttribute("style", style);
+
+            document.getElementById("terapeuticaE").readOnly = false;
+            document.getElementById("terapeuticaE").setAttribute("style", style);
+
+            document.getElementById("diagnosticoP").readOnly = false;
+            document.getElementById("diagnosticoP").setAttribute("style", style);
+
+          }
+
+          function cancelarCambios(){
+            let style = "cursor:default; border: none;";
+            document.getElementById("btnConfirmar").setAttribute("style", "display:inline;");
+            document.getElementById("btnCancelar").setAttribute("style", "display:inline;");
+
+            document.getElementById("nombreC").readOnly = true;
+            document.getElementById("nombreC").setAttribute("style", style);
+
+            document.getElementById("apellidoP").readOnly = true;
+            document.getElementById("apellidoP").setAttribute("style", style);
+
+            document.getElementById("apellidoM").readOnly = true;
+            document.getElementById("apellidoM").setAttribute("style", style);
+
+            document.getElementById("fechaN").readOnly = true;
+            document.getElementById("fechaN").setAttribute("style", style);
+
+            document.getElementById("sexoId").readOnly = true;
+            document.getElementById("sexoId").setAttribute("style", style);
+
+            document.getElementById("antecedentesH").readOnly = true;
+            document.getElementById("antecedentesH").setAttribute("style", style);
+
+            document.getElementById("antecedentesPNP").readOnly = true;
+            document.getElementById("antecedentesPNP").setAttribute("style", style);
+
+            document.getElementById("antecedentesPP").readOnly = true;
+            document.getElementById("antecedentesPP").setAttribute("style", style);
+
+            document.getElementById("padecimiento").readOnly = true;
+            document.getElementById("padecimiento").setAttribute("style", style);
+
+            document.getElementById("interrogatorioA").readOnly = true;
+            document.getElementById("interrogatorioA").setAttribute("style", style);
+
+            document.getElementById("exploracionF").readOnly = true;
+            document.getElementById("exploracionF").setAttribute("style", style);
+
+            document.getElementById("resultadosP").readOnly = true;
+            document.getElementById("resultadosP").setAttribute("style", style);
+
+            document.getElementById("terapeuticaE").readOnly = true;
+            document.getElementById("terapeuticaE").setAttribute("style", style);
+
+            document.getElementById("diagnosticoP").readOnly = true;
+            document.getElementById("diagnosticoP").setAttribute("style", style);
+
+            location.reload();
+            return false
+          }
+
+
+        </script>
+
+    </head>
+    <body>
+        
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="navbar navbar-expand-lg  shadow-lg fixed-top" style="background-color:#031926;">
+                    <a class="navbar-brand" href="/menuGeneral"><img class="ml-n4 img-log" src="images/MRM.png" width="80%" height="100%"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                  
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                          <p class="mt-3 ml-n6 text-light nav-link">M E D I C A L &nbsp R E C O R D &nbsp  M A N A G E R</p>
+                        </li>
+
+                      </ul>
+        
+                      <a class="btn btn-primary nav-link" href="/login" style="color: white;">Logout</a>
+                      
+                    </div>
+                  </nav>
+            </div>
+
+            <div class="row mt-5">
+              <div class="col-xl-3">
+                <div class="row mt-5 justify-content-center">
+                  <div class="col-xl-12 mt-5">
+                    <div class="card shadow w-100" style="width: 18rem;">
+                      <div class="card-header text-center">
+                        <button class="btn ml-n3" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fa fa-bars"></i></button>
+                        <b >Información de Paciente</b>
+                      
+                      </div>
+                      <img class="card-img-top" src="images/pat.jpg" alt="Card image cap">
+                      <form id="cambiarInfo" action="/cambiarInfo" method="POST">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-xl-4 col-3 col-lg-5 col-sm-3 col-md-3 mt-1">
+                              <p>Nombre:</p>
+                            </div>
+                            <div class="col-xl-8 col-4 col-lg-3 col-sm-4 col-md-4 ml-n5">
+                              <input class="form-control rounded align-self-center" type="text" id="nombreC" name="nombre" value="<%-   info[0].nombre   %>" style="border-radius: 2px; border: none; cursor: default;" readonly>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xl-5 col-4 col-sm-3 col-md-3 mt-1">
+                              <p>Ap Paterno:</p>
+                            </div>
+                            <div class="col-xl-7 col-5 col-sm-4 col-md-4 ml-n5 ">
+                              <input class="form-control rounded" type="text" id="apellidoP" name="apellidoP" value="<%-   info[0].aPaterno   %>" style="border-radius: 2px; border: none; cursor: default;" readonly>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xl-5 col-4 col-sm-3 col-md-3 mt-1">
+                              <p>Ap Materno:</p>
+                            </div>
+                            <div class="col-xl-7 col-5 col-sm-4 col-md-4  ml-n5">
+                              <input class="form-control rounded" type="text" id="apellidoM" name="apellidoM" value="<%-   info[0].aMaterno   %>" style="border-radius: 2px; border: none; cursor: default;" readonly>
+                            </div>
+                          </div>
+                          
+                          
+                          
+                        </div>
+                        <ul class="list-group list-group-flush collapse multi-collapse" id="multiCollapseExample2">
+                          <li class="list-group-item">Clave Paciente:<b><input type="text" class="form-control" id="claveP" name="curp" value="<%- info[0].claveP %>" style="border-radius: 2px; border: none; cursor: default;" readonly></b> </li>
+                          <li class="list-group-item">Fecha Nacimiento:<b><input type="text" class="form-control" id="fechaN" name="fechaN" value="<%- info[0].fechaN %>" style="border-radius: 2px; border: none; cursor: default;" readonly> </b> </li>
+                          <li class="list-group-item">Sexo:<b><input type="text" id="sexoId" class="form-control" name="sexoId" value="<%- info[0].sexo %>" style="border-radius: 2px; border: none; cursor: default;" readonly></b> </li>
+                          <li class="list-group-item">Antececdentes Heredo Familiares:<b><input class="form-control" type="text" id="antecedentesH" name="antecedentesH" value="<%- historial[0].antecedentesH %>" style="border-radius: 2px; border: none; cursor: default;" readonly></b></li>
+                          <li class="list-group-item">Antececdentes Personales No-P: <b><input class="form-control" type="text" id="antecedentesPNP" name="antecedentesPNP" value="<%- historial[0].antecedentesPNP %>" style="border-radius: 2px; border: none; cursor: default;" readonly></b></li>
+                          <li class="list-group-item">Antececdentes Personales P:<b> <input class="form-control" type="text" id="antecedentesPP" name="antecedentesPP" value="<%- historial[0].antecedentesPP %>" style="border-radius: 2px; border: none; cursor: default;" readonly></b></li>
+                          <li class="list-group-item">Padecimiento Actual:<b> <input type="text" class="form-control" id="padecimiento" name="padecimiento" value="<%- historial[0].padecimiento %>" style="border-radius: 2px; border: none; cursor: default;" readonly></b></li>
+                          <li class="list-group-item">Interrogatorio por aparatos y sistemas:<b> <input class="form-control" type="text" id="interrogatorioA" name="interrogatorioA" value="<%- historial[0].interrogatorioA %>" style="border-radius: 2px; border: none; cursor: default;" readonly></b></li>
+                          <li class="list-group-item">Exploración física:<b> <input class="form-control" type="text" id="exploracionF" name="exploracionF" value="<%- historial[0].exploracionF %>" style="border-radius: 2px; border: none; cursor: default;" readonly></b></li>
+                          <li class="list-group-item">Resultados previos y actuales de laboratorio:<b> <input class="form-control" type="text" id="resultadosP" name="resultadosP" value="<%- historial[0].resultadosP %>" style="border-radius: 2px; border: none; cursor: default;" readonly></b></li>
+                          <li class="list-group-item">Terapéutica empleada y resultados obtenidos:<b><input class="form-control" type="text" id="terapeuticaE" name="terapeuticaE" value="<%- historial[0].terapeuticaE %>" style="border-radius: 2px; border: none; cursor: default;" readonly></b></li>
+                          <li class="list-group-item">Diagnosticos o problemas clínicos:<b><input class="form-control" type="text" id="diagnosticoP" name="diagnosticoP" value="<%- historial[0].diagnosticoP %>" style="border-radius: 2px; border: none; cursor: default;" readonly></b></li>
+                        </ul>
+                      </form>
+                      <div class="card-footer">
+                        <button type="button" class=" ml-1 btn btn-primary shadow" data-toggle="modal" data-target="#modalModificar" onclick="modificarCampos();">Modificar</button>
+                        <button id="btnConfirmar" type="button" class=" ml-1 btn btn-success shadow" style="display: none;" onclick="confirmarCambios();"><i class="fa fa-check" aria-hidden="true"></i></button>
+                        
+                        <button id="btnCancelar" type="button" class=" ml-1 btn btn-danger shadow" style="display: none;" onclick="cancelarCambios();"><i class="fa fa-close"></i></button>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-6">
+                <div class="row mt-5">
+                  <div class="col-xl-12 text-center">
+                    <form action="/insertarVisita" method="POST" class="justify-content-center">
+                      <div class="form-group row mt-5">
+                        <div class="col-xl-3">
+                          <label for="example-date-input" class="float-left ml-3">Fecha Consulta</label>
+                          <input class="form-control" required type="date" value="2011-08-19" id="example-date-input" name="fecha">
+                          <input class="form-control" type="text" value="<%- info[0].claveP %>" style="display: none;" name="curp">
+                        </div>
+                        <div class="col-xl-3">
+                          <label for="peso" class="float-left ml-3">Peso Paciente (Kg):</label>
+                          <input class="form-control" required type="number" id="peso" step="any" name="peso">
+                        </div>
+                        <div class="col-xl-3">
+                          <label for="talla" class="float-left ml-3">Talla Paciente:</label>
+                          <input class="form-control" required type="number" id="talla" step="any" name="talla">
+                        </div>
+                        <div class="col-xl-3">
+                          <label for="tension" class="float-left ml-3">Tension A:</label>
+                          <input class="form-control" required type="number" id="tension" step="any" name="tensionA">
+                        </div>
+                      </div>
+                      <div class="form-group row mt-3">
+                        <div class="col-xl-4">
+                          <label for="frecuenciac" class="float-left ml-3">Frecuencia C:</label>
+                          <input class="form-control" required type="number" id="frecuenciac" step="any" name="frecuenciaC">
+                        </div>
+                        <div class="col-xl-4">
+                          <label for="frecuenciaR" class="float-left ml-3">Frecuencia R:</label>
+                          <input class="form-control" required type="number" id="frecuenciaR" step="any" name="frecuenciaR">
+                        </div>
+                        <div class="col-xl-4">
+                          <label for="temp" class="float-left ml-3">Temperatura (C°):</label>
+                          <input class="form-control" required type="number" id="temp" step="any" name="temperatura">
+                        </div>
+                      </div>
+                      <div class="form-group row mt-3">
+                        <div class="col-xl-6">
+                          <label for="exampleFormControlTextarea1">Resumen</label>
+                          <textarea res class="form-control" required id="exampleFormControlTextarea1" rows="3" name="resumen" style="resize: none;"></textarea>
+                        </div>
+                        <div class="col-xl-6">
+                          <label for="explor">Exploracion F:</label>
+                          <textarea class="form-control" required id="explor" rows="3" name="exploracionF" style="resize: none;"></textarea>
+                        </div>
+
+                      </div>
+                      <div class="form-group row mt-3">
+                        <div class="col-xl-6">
+                          <label for="resultadoe">Resultado E:</label>
+                          <textarea class="form-control" required id="resultadoe" rows="3" name="resultadoE" style="resize: none;"></textarea>
+                        </div>
+                        <div class="col-xl-6">
+                          <label for="diagnostico">Diagnosticos:</label>
+                          <textarea class="form-control" required id="diagnostico" rows="3" name="diagnostico" style="resize: none;"></textarea>
+                        </div>
+
+                      </div>
+                      <div class="form-group row mt-3">
+                        <div class="col-xl-6">
+                          <label for="plantrat">Plan Tratamiento:</label>
+                          <textarea class="form-control" required id="plantrat" rows="3" name="planTratamiento" style="resize: none;"></textarea>
+                        </div>
+                        <div class="col-xl-6">
+                          <label for="pronostico">Pronostico:</label>
+                          <textarea class="form-control" required id="pronostico" rows="3" name="pronostico" style="resize: none;"></textarea>
+                        </div>
+
+                      </div>
+                      
+                      <button type="submit" class="btn btn-primary">Registrar nueva visita</button>
+                    </form>
+                  </div>
+                </div>
+                <div class="row mt-5 mb-5" id="seccionVisitas">
+                  
+                </div>
+              </div>
+              <div class="col-xl-3">
+                <div class="row mt-5">
+                  <div class="col-xl-12 mt-5">
+                    <div class="card shadow w-100" style="width: 18rem;">
+                      <div class="card-header text-center">
+                        <form action="/upload" method="POST" enctype="multipart/form-data">
+                          <input type="text" id="claveP" name="curp" value="<%= info[0].claveP %>" style="display: none;" >
+                        <b >Archivos de Paciente <button class="btn" type="button" data-toggle="collapse" data-target="#listaArchivos" aria-expanded="false" aria-controls="listaArchivos"><i class="fa fa-bars"></i></button></b>
+                      </div>
+                      <% if (archivos != "vacio") {%>
+                        <ul class="collapse list-group list-group-flush" id="listaArchivos"></ul>
+                        <% archivos.forEach((archivo, index) => { %>
+                          <li class="list-group-item"><%- archivo.nombre %></li>
+                        <% }) %>
+                        
+                      <% } else { %>
+                        <li class="list-group-item">No hay archivos registrados</li>
+                    <% } %>
+                      </ul>
+                      <div class="input-group">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" required  name="my_file" id="inputGroupFile04">
+                          <label class="custom-file-label" for="inputGroupFile04">Buscar</label>
+                        </div>
+                        <div class="input-group-append">
+                          <button class="btn btn-primary" type="submit">Subir</button>
+                        </div>
+                      </div>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <%if (visitas != "vacio"){ %>
+              <% var cont=0; %> 
+              <%visitas.forEach((visita, index) => { %>
+                <% cont=cont+1; %> 
+            <div class="row mb-5 mt-4 justify-content-center">
+              <div class="col-xl-11">
+                <div class="card shadow w-100">
+                  <h5 class="card-header text-light" style="background-color:#031926;">Visita del <%- visita.fechaC %> <button class="btn btn-light float-right" type="button" data-toggle="collapse" data-target="#visita<%= cont %> " aria-expanded="false" aria-controls="visita<% cont %> "><i class="fa fa-bars"></i></button></h5>
+                  
+                  <div id="visita<%= cont %>" class="card-body collapse text-justify justify-content-center">
+                    <div class="row justify-content-center">
+                      <div class="col-xl-2">
+                        <div class="card shadow h-75">
+                          <h5 class="card-header text-light bg-warning" >Peso</h5>
+                          <div class="card-body">
+                            <p class="mt-n2"><%- visita.peso %></p>
+                          </div> 
+                        </div>
+                      </div>
+                      <div class="col-xl-2">
+                        <div class="card ml-2 shadow h-75" >
+                          <h5 class="card-header text-light bg-warning">Talla</h5>
+                          <div class="card-body">
+                            <p class="mt-n2"> <%- visita.talla %></p>
+                          </div> 
+                        </div>
+                      </div>
+                      <div class="col-xl-2">
+                        <div class="card ml-2 shadow h-75">
+                          <h5 class="card-header text-light bg-warning">Tensión A</h5>
+                          <div class="card-body">
+                            <p class="mt-n2"> <%- visita.tensionA %></p>
+                          </div> 
+                        </div>
+                      </div>
+                      <div class="col-xl-2">
+                        <div class="card ml-2 shadow h-75">
+                          <h5 class="card-header text-light bg-warning">Frecuencia C</h5>
+                          <div class="card-body">
+                            <p class="mt-n2"><%- visita.frecuenciaC %></p>
+                          </div> 
+                        </div>
+                      </div>
+                      <div class="col-xl-2">
+                        <div class="card ml-2 shadow h-75">
+                          <h5 class="card-header text-light bg-warning">Frecuencia R</h5>
+                          <div class="card-body">
+                            <p class="mt-n2"><%- visita.frecuenciaR %></p>
+                          </div> 
+                        </div>
+                      </div>
+                      <div class="col-xl-2">
+                        <div class="card ml-2 shadow h-75">
+                          <h5 class="card-header text-light bg-warning">Temperatura</h5>
+                          <div class="card-body">
+                            <p class="mt-n2"> <%- visita.temperatura %></p>
+                          </div> 
+                        </div>
+                      </div>
+                     
+                    </div>
+                    <div class="row mt-2 justify-content-center">
+                      <div class="col-xl-4">
+                        <div class="card ml-2 shadow h-75">
+                          <h5 class="card-header text-light bg-info">Resumen</h5>
+                          <div class="card-body">
+                            <p class="mt-n2"> <%- visita.resumenI %></p>
+                          </div> 
+                        </div>
+                      </div>
+                      <div class="col-xl-3">
+                        <div class="card ml-2 shadow h-75">
+                          <h5 class="card-header text-light bg-info">Exploracion F</h5>
+                          <div class="card-body">
+                            <p class="mt-n2"> <%- visita.exploracionF%></p>
+                          </div> 
+                        </div>
+                      </div>
+                      <div class="col-xl-3">
+                        <div class="card ml-2 shadow h-75">
+                          <h5 class="card-header text-light bg-info">Resultado E</h5>
+                          <div class="card-body">
+                            <p class="mt-n2"><%- visita.resultadoE %></p>
+                          </div> 
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row mt-2 justify-content-center">
+                      <div class="col-xl-4">
+                        <div class="card ml-2 shadow h-75">
+                          <h5 class="card-header text-light bg-info">Diagnosticos</h5>
+                          <div class="card-body">
+                            <p class="mt-n2"><%- visita.diagnosticos %></p>
+                          </div> 
+                        </div>
+                      </div>
+                      <div class="col-xl-4">
+                        <div class="card ml-2 shadow h-75">
+                          <h5 class="card-header text-light bg-info">Plan Tratamiento</h5>
+                          <div class="card-body">
+                            <p class="mt-n2"><%- visita.planTratamiento %></p>
+                          </div> 
+                        </div>
+                      </div>
+                      <div class="col-xl-4">
+                        <div class="card ml-2 shadow h-75">
+                          <h5 class="card-header text-light bg-info">Pronostico</h5>
+                          <div class="card-body">
+                            <p class="mt-n2"><%- visita.pronostico %></p>
+                          </div> 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    
+          
+                </div>
+              </div>
+            </div>
+            <% })%>
+            <% } else{ %> 
+              <div class="row justify-content-center mt-5 mb-5">
+                <div class="col-xl-5">
+                  <div class="card text-center">
+                    <div class="card-header">
+                      M E D I C A L  &nbsp R E C O R D  &nbsp M A N A G E R 
+                    </div>
+                    <div class="card-body">
+                      <blockquote class="blockquote mb-0">
+                        <p>No existen visitas registradas de este paciente</p>
+                        
+                      </blockquote>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            <% } %>
+
+        </div>
+
+        
+    </body>
+</html>

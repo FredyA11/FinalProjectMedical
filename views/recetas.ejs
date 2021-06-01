@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Clínica - Receta Médica</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+
+        <style>
+          .mt-7{
+            margin-top: 6%;
+          }
+
+          .ml-n6{
+            margin-left: -30%;
+          }
+
+          .ml-custom{
+              margin-left: 50%;
+          }
+
+          .ml-custom2{
+              margin-left: 40%;
+          }
+          .img-log {
+          -webkit-filter: invert(1);
+          filter: invert(1);
+          }
+                  
+          body{
+             background-color: white;
+             font-family: 'Quicksand', sans-serif;
+          }
+
+
+          
+        </style>
+
+        <script type="text/javascript">
+
+          function generarReceta(){
+
+            nombreDoc = document.querySelector("#nombreDocI").value;
+            fecha = document.querySelector("#fechaI").value;
+            nombrePac = document.querySelector("#nombrePI").value;
+            cedProf = document.querySelector("#cedI").value;
+            instit = document.querySelector("#instI").value;
+            tel = document.querySelector("#telI").value;
+            direcc = document.querySelector("#dirI").value;
+            tratam = document.querySelector("#tratamientoI").value;
+            
+            document.querySelector("#nombreDoc").setAttribute("value", nombreDoc);
+            document.querySelector("#btngenerar").setAttribute("style", "display:none;");
+            document.querySelector("#fecha").setAttribute("value", fecha);
+            document.querySelector("#nombreP").setAttribute("value", nombrePac);
+            document.querySelector("#ced").setAttribute("value", cedProf);
+            document.querySelector("#inst").setAttribute("value", instit);
+            document.querySelector("#tel").setAttribute("value", tel);
+            document.querySelector("#dir").setAttribute("value", direcc);
+            document.querySelector("#tratamiento").setAttribute("value", tratam);
+           
+            setTimeout(function(){ document.querySelector("#btngenerar").setAttribute("style", "display:inline;"); }, 3000);
+            window.print();
+            /*let form = document.getElementById("generarRecForm");
+            form.submit();*/
+          }
+
+        </script>
+
+    </head>
+
+    <body>
+        
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="navbar navbar-expand-lg  shadow-lg fixed-top" style="background-color:#031926;">
+                    <a class="navbar-brand" href="/menuGeneral"><img class="ml-n4 img-log" src="images/MRM.png" width="80%" height="100%"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                  
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                          <p class="mt-3 ml-n6 text-light nav-link">M E D I C A L &nbsp R E C O R D &nbsp  M A N A G E R</p>
+                        </li>
+
+                      </ul>
+        
+                      <a class="btn btn-primary nav-link" href="/login" style="color: white;">Logout</a>
+                      
+                    </div>
+                  </nav>
+            </div>
+
+ 
+
+            <div class="row mt-7 mb-5 justify-content-center">
+                <div class="col-xl-12 mt-5">
+                    <div class="card shadow">
+                        <div class="card-header">
+                          <div class="row justify-content-center">
+                            <div class="col-xl-3 col-md-12 col-6 justify-content-center">
+                              <img class="mt-n2"  src="images/MRM.png">
+                            </div>
+                            <div class="col-xl-6 col-6 col-md-12 mt-4 text-center">
+                              <h4 class="ml-custom2" id="nombreDocI">Doctor: <%= doctor[0].nombre %> <%= doctor[0].aPaterno %> <%= doctor[0].aMaterno %></h4>
+                              
+                            </div>
+                          </div>
+                          <div class="row mb-3 justify-content-center">
+                            <div class="col-xl-4 col-md-4 d-flex">
+                              <p>Fecha:</p>
+                              <input  id="fechaI" class="form-control" type="date">
+                            </div>
+                          </div>
+                          <div class="row d-flex justify-content-center">
+                            <div class="col-xl-3 col-md-3">
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                      Cédula Profesional
+                                    </div>
+                                    <div class="card-body">
+                                      <input class="form-control" id="cedI" type="text" value="<%= doctor[0].cedula %>" readonly>
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-xl-3 col-md-3">
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                      Institución 
+                                    </div>
+                                    <div class="card-body">
+                                      <input class="form-control" id="instI" type="text" value="Clínica Medica San José">
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-xl-2 col-md-3">
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                      Teléfono 
+                                    </div>
+                                    <div class="card-body">
+                                      <input class="form-control" id="telI" type="text" value="722984652">
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-xl-3 col-md-3">
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                      Direccion 
+                                    </div>
+                                    <div class="card-body">
+                                      <input class="form-control" id="dirI" type="text" value="Av Adolfo Lopez Mateos #754">
+                                    </div>
+                                  </div>
+                            </div>
+
+                        </div>
+                        
+                          
+
+                          
+                        </div>
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-xl-2 col-md-3">
+                              <p>Nombre del paciente: </p>
+                            </div>
+                            <div class="col-xl-6 col-md-6 ">
+                              <input id="nombrePI" class="form-control mb-4" style="border-radius: 2px;" type="text" value="<%= nombrePac %>" readonly>
+                            </div>
+                          </div>
+                         
+                         
+                            
+                            <h5 class="card-title">Tratamiento</h5>
+                          <div class="form-group">
+                            <textarea id="tratamientoI" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                          </div>
+                          <form id="generarRecForm" action="/generarRecetaPDF" method="POST">
+                              <input type="text" id="nombreDoc" name="nombreDoc" value="" style="display: none;">
+                              <input type="text" id="fecha" name="fecha" value=""  style="display: none;">
+                              <input type="text" id="nombreP" name="nombreP" value="" style="display: none;">
+                              <input type="text" id="ced" name="cedula" value=""  style="display: none;">
+                              <input type="text" id="inst" name="inst" value="" style="display: none;">
+                              <input type="text" id="tel" name="tel" value=""  style="display: none;">
+                              <input type="text" id="dir" name="dir" value=""  style="display: none;">
+                              <input type="text" id="tratamiento" name="trat" value="" style="display: none;">
+                              
+                          </form>
+                          <button type="button" class="btn btn-danger" id="btngenerar" onclick="generarReceta();">Generar PDF de Receta</button>
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                          M E D I C A L  &nbsp R E C O R D  &nbsp M A N A G E R  &nbsp 2 0 2 0 
+                        </div>
+                      </div>
+                </div>
+                
+            </div>
+        </div>
+
+        
+       
+    </body>
+</html>

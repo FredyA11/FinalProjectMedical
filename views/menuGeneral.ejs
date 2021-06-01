@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Clínica - Registro</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+
+        <style>
+          .mt-7{
+            margin-top: 6%;
+          }
+
+          .ml-n6{
+            margin-left: -30%;
+          }
+
+          .mt-custom{
+            margin-top: 10%;
+          }
+          .img-log {
+          -webkit-filter: invert(1);
+          filter: invert(1);
+          }
+                  
+          body{
+             background-color: white;
+             font-family: 'Quicksand', sans-serif;
+          }
+
+
+          
+        </style>
+
+
+        <script type="text/javascript">
+
+          function eliminarP(curp){
+            document.querySelector("#inputEliminarGhost").setAttribute("value", curp);
+          }
+
+          function modificarP(curp){
+            document.querySelector("#inputModificarGhost").setAttribute("value", curp);
+          }
+
+          function historialP(curp){
+            document.querySelector("#inputHistorialGhost").setAttribute("value", curp);
+            let form = document.getElementById("formHistorial-"+curp);
+            form.submit();
+          }
+
+        </script>
+
+    </head>
+    <body>
+        
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="navbar navbar-expand-lg  shadow-lg fixed-top" style="background-color:#031926;">
+                    <a class="navbar-brand" href="/menuGeneral"><img class="ml-n4 img-log" src="images/MRM.png" width="80%" height="100%"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                  
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                          <p class="mt-3 ml-n6 text-light nav-link">M E D I C A L &nbsp R E C O R D &nbsp  M A N A G E R</p>
+                        </li>
+
+                      </ul>
+        
+                      <a class="btn btn-primary nav-link" href="/login" style="color: white;">Logout</a>
+                      
+                    </div>
+                  </nav>
+            </div>
+
+          
+            
+            <div class="row mt-custom h-100 justify-content-center">
+                <div class="col-xl-5  h-100 col-md-12 mt-5">
+                  <div class="card shadow">
+                    <h5 class="card-header">Búsqueda de Paciente</h5>
+                    <div class="card-body">
+                      <h5 class="card-title">Buscar por CURP</h5>
+                      <form class="form-inline mt-4" action="/search" accept-charset="UTF-8" method="post" autocomplete="off">
+                        <input type="search" name="curp" id="curp" value="" placeholder="Nombre de Paciente" class="flex-fill mr-2 form-control" aria-label="Search this site" autocomplete="off">
+                        <input type="submit" name="commit" value="Buscar" class="btn btn-primary" data-disable-with="Search">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xl-5 d-flex h-100 col-md-12 mt-5 align-self-center">
+                  <div class="card shadow">
+                    <div class="row no-gutters">
+                      <div class="col-md-4">
+                        <img src="images/pat.jpg" height="100%" class="card-img" alt="Paciente">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">Registro de Pacientes</h5>
+                          <button class="mt-4 btn btn-primary" data-toggle="modal" data-target="#modalRegistrar">Registrar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+            <div class="row mt-5 justify-content-center">
+              <div class="col-xl-12 col-sm-4">
+                <%if (patients != "vacio"){ %>
+                  <table class="table shadow table-dark table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">CURP</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido Paterno</th>
+                        <th scope="col">Apellido Materno</th>
+                        <th scope="col">Fecha de Nacimiento</th>
+                        <th scope="col">Sexo</th>
+                        <th scope="col">Opciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <%patients.forEach((patient, index) => { %>
+                      <tr>
+                          <th scope="row"><%= patient.claveP %></th>
+                          <td><%= patient.nombre %></td>
+                          <td><%= patient.aPaterno %></td>
+                          <td><%= patient.aMaterno %></td>
+                          <td id="<%= patient.claveP %> "><%= patient.fechaN %></td>
+                          <script>
+                            var d= "<%= patient.fechaN %>";
+                              var d2= d.split(' ')[1];
+                              var d3= d.split(' ')[2];
+                              var d4= d.split(' ')[3];
+                              console.log(d2,d3,d4);
+                              //Ya pude que solo saque dia mes año pero ya no supe como reemplazarlo
+                          </script>
+                          
+                          <td><%= patient.sexo %></td>
+                          <td class="d-flex">
+                            <form id="formHistorial-<%= patient.claveP %>" method="POST" action="/informacionPaciente"><input id="inputHistorialGhost" type="text" style="display: none;" name="curp" value="<%= patient.claveP %>"><input type="submit" class="btn btn-primary" value="Historial"></form>
+                            <!--<button type="button" class=" ml-2 btn btn-info" data-toggle="modal" data-target="#modalModificar" onclick="modificarP('<%= patient.claveP %>')">Modificar</button>-->
+                            <form class="ml-2" action="/generarReceta" method="POST"><input type="text" name="nombrePaciente" style="display: none;" value="<%= patient.nombre%> <%=patient.aPaterno%> <%=patient.aMaterno%>"><input type="submit"  class="btn btn-warning" value="Generar Receta"></form>
+                            <button type="button" class=" ml-2 btn btn-danger" data-toggle="modal" data-target="#modalEliminar" onclick="eliminarP('<%= patient.claveP %>')">Eliminar</button>
+                          </td>
+                      </tr>
+                    <% })%>
+                  </tbody>
+                </table>
+                <% } else{ %> 
+                  <div class="row justify-content-center mt-5 mb-5">
+                    <div class="col-xl-5">
+                      <div class="card text-center">
+                        <div class="card-header">
+                          M E D I C A L  &nbsp R E C O R D  &nbsp M A N A G E R 
+                        </div>
+                        <div class="card-body">
+                          <blockquote class="blockquote mb-0">
+                            <p>Usted no tiene pacientes registrados</p>
+                            
+                          </blockquote>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% } %>
+              </div>
+            </div>
+        </div>
+
+        
+
+
+        <!-- Modal -->
+        <div class="modal shadow fade" id="modalRegistrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <p ><img class="modal-title ml-n5" src="images/MRM.png" width="50%" height="25%">M E D I C A L &nbsp R E C O R D &nbsp M A N A G E R </p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-xl-12 text-center">
+                      <h4>Registrar nuevo Paciente</h4>
+                    </div>
+                  </div>
+                  <div class="row mt-3 justify-content-center">
+                    <div class="col-xl-10">
+                      <form action="/nuevoPaciente" method="POST" autocomplete="off">
+                        <div class="form-row">
+                          <div class="col-xl-6">
+                            <label for="nombre">Nombre Paciente</label>
+                            <input required type="text" class="form-control" id="nombre" name="nombre"  placeholder="Nombre">
+                          </div>
+                          <div class="col-xl-6">
+                            <label for="nombre">Apellido Paterno</label>
+                            <input required type="text" class="form-control" id="aPaterno" name="aPaterno" aria-describedby="emailHelp" placeholder="Apellido Paterno">
+                          </div>
+                        </div>
+                      
+                        <div class="form-row mt-4">
+                          <div class="col-xl-6">
+                            <label for="nombre">Apellido Materno</label>
+                            <input required type="text" class="form-control" id="aMaterno" name="aMaterno" aria-describedby="emailHelp" placeholder="Apellido Materno">
+                          </div>
+                          <div class="col-xl-6">
+                            <label for="example-date-input">Fecha Nacimiento</label>
+                            <input required class="form-control" id="fechan" name="fechan" type="date" value="2011-08-19" id="example-date-input">
+                          </div>
+                        </div>
+                        <div class="form-row mt-4">
+                          <div class="col-xl-4">
+                            <label for="nombre">CURP</label>
+                            <input required type="text" class="form-control" id="curp" name="curp" aria-describedby="emailHelp" placeholder="CURP">
+                          </div>
+                          <div class="col-xl-4 ml-3">
+                            <label for="nombre">Sexo</label>
+                            <div class="form-row mt-1">
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="genero" id="sexoMas" value="masculino">
+                                <label class="form-check-label" for="sexoMas">
+                                  Masculino
+                                </label>
+                              </div>
+                            </div>
+                            <div class="form-row">
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="genero" id="sexoFem" value="femenino" checked>
+                                <label class="form-check-label" for="sexoFem">
+                                  Femenino
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <button type="submit" class="btn mt-3 btn-primary">Registrar Paciente</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <img class="modal-title ml-n5" src="images/MRM.png" width="50%" height="25%">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row ">
+                  <div class="col-xl-12 text-center">
+                    <h4>¿Eliminar paciente?</h4>
+                  </div>
+                </div>
+                <div class="row mt-5 justify-content-center">
+                  <form action="/eliminarPaciente" method="POST">
+                    <input id="inputEliminarGhost" name="curp" type="text" value="" style="display: none;">
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  </form>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </body>
+</html>
