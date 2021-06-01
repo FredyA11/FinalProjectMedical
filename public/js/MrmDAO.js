@@ -11,7 +11,7 @@ class MrmDAO{
 
     createConnection(){
         this.con = mysql.createConnection({
-            host: "34.74.218.12",
+            host: "10.39.240.3",
             user: "root",
             password: "cK0DFFJ5jwfEw53g",
             database:"docbay",
