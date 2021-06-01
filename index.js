@@ -1,7 +1,7 @@
 //Imports
 const express = require("express");
 const app= express();
-const port=8080;
+const port=80;
 const bodyParser = require('body-parser');
 const MrmDAO= require("./public/js/MrmDAO.js")
 const medDAO= new MrmDAO();
