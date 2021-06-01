@@ -113,7 +113,7 @@ passport.deserializeUser(function(id, done){
 
 //LOGIN
 
-app.get('',(req,res)=>{
+app.get('/',(req,res)=>{
     res.render("login");
 });
 
