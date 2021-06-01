@@ -1,3 +1,5 @@
 # [START app_yaml]
 runtime: nodejs14
+vpc_access_connector:
+  name: projects/arquitectura-sw-2021/locations/us-east1/connectors/sql-app
 # [END app_yaml]
