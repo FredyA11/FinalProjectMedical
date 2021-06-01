@@ -27,6 +27,7 @@ app.use('/images',express.static(__dirname+'public/images'));
 app.set('views','./views');
 app.set('view engine','ejs');
 
+app.set("port",process.env.PORT || port) 
 // bodyParser
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -300,7 +301,7 @@ app.post("/generarReceta",(req,res)=>{
 });
 
 //Listen  Port 8080
-app.listen(port,()=>{
+app.listen(app.get("port"),()=>{
     console.info("Listening on port:"+port);
 })
 
